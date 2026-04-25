@@ -30,7 +30,7 @@ function SignupPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) navigate({ to: "/dashboard" });
+    if (user) navigate({ to: "/app/dashboard" });
   }, [user, navigate]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -41,7 +41,7 @@ function SignupPage() {
       return;
     }
     setLoading(true);
-    const redirectUrl = typeof window !== "undefined" ? window.location.origin + "/dashboard" : undefined;
+    const redirectUrl = typeof window !== "undefined" ? window.location.origin + "/app/dashboard" : undefined;
     const { error } = await supabase.auth.signUp({
       email: parsed.data.email,
       password: parsed.data.password,
@@ -55,14 +55,14 @@ function SignupPage() {
       toast.error(error.message);
     } else {
       toast.success("Account created! Welcome.");
-      navigate({ to: "/dashboard" });
+      navigate({ to: "/app/dashboard" });
     }
   }
 
   async function handleGoogle() {
     setLoading(true);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: typeof window !== "undefined" ? window.location.origin + "/dashboard" : undefined,
+      redirect_uri: typeof window !== "undefined" ? window.location.origin + "/app/dashboard" : undefined,
     });
     setLoading(false);
     if (result.error) toast.error(result.error.message ?? "Google sign-in failed");
