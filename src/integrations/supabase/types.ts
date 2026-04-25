@@ -14,7 +14,173 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analyses: {
+        Row: {
+          appliance_id: string
+          confidence: string
+          created_at: string
+          current_power_w: number
+          efficiency_loss_pc: number
+          five_year_cost: number
+          future_trend: Json
+          health_score: number
+          id: string
+          match_method: string
+          monthly_cost: number
+          monthly_extra_cost: number
+          monthly_kwh: number
+          recommendations: Json
+          remaining_life_years: number
+          summary: string | null
+          user_id: string
+        }
+        Insert: {
+          appliance_id: string
+          confidence: string
+          created_at?: string
+          current_power_w: number
+          efficiency_loss_pc: number
+          five_year_cost: number
+          future_trend: Json
+          health_score: number
+          id?: string
+          match_method: string
+          monthly_cost: number
+          monthly_extra_cost: number
+          monthly_kwh: number
+          recommendations: Json
+          remaining_life_years: number
+          summary?: string | null
+          user_id: string
+        }
+        Update: {
+          appliance_id?: string
+          confidence?: string
+          created_at?: string
+          current_power_w?: number
+          efficiency_loss_pc?: number
+          five_year_cost?: number
+          future_trend?: Json
+          health_score?: number
+          id?: string
+          match_method?: string
+          monthly_cost?: number
+          monthly_extra_cost?: number
+          monthly_kwh?: number
+          recommendations?: Json
+          remaining_life_years?: number
+          summary?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analyses_appliance_id_fkey"
+            columns: ["appliance_id"]
+            isOneToOne: false
+            referencedRelation: "appliances"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      appliance_catalog: {
+        Row: {
+          appliance_type: string
+          brand: string | null
+          created_at: string
+          energy_star: boolean | null
+          id: string
+          max_life_years: number
+          model: string | null
+          power_rating_watts: number
+        }
+        Insert: {
+          appliance_type: string
+          brand?: string | null
+          created_at?: string
+          energy_star?: boolean | null
+          id?: string
+          max_life_years: number
+          model?: string | null
+          power_rating_watts: number
+        }
+        Update: {
+          appliance_type?: string
+          brand?: string | null
+          created_at?: string
+          energy_star?: boolean | null
+          id?: string
+          max_life_years?: number
+          model?: string | null
+          power_rating_watts?: number
+        }
+        Relationships: []
+      }
+      appliances: {
+        Row: {
+          age_years: number
+          appliance_type: string
+          brand: string | null
+          created_at: string
+          daily_usage_hours: number
+          electricity_rate: number
+          id: string
+          model: string | null
+          power_rating_watts: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age_years?: number
+          appliance_type: string
+          brand?: string | null
+          created_at?: string
+          daily_usage_hours?: number
+          electricity_rate?: number
+          id?: string
+          model?: string | null
+          power_rating_watts?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age_years?: number
+          appliance_type?: string
+          brand?: string | null
+          created_at?: string
+          daily_usage_hours?: number
+          electricity_rate?: number
+          id?: string
+          model?: string | null
+          power_rating_watts?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
