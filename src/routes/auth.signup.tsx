@@ -30,7 +30,7 @@ function SignupPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) navigate({ to: "/dashboard" });
+    if (user) navigate({ to: "/app/dashboard" });
   }, [user, navigate]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -55,7 +55,7 @@ function SignupPage() {
       toast.error(error.message);
     } else {
       toast.success("Account created! Welcome.");
-      navigate({ to: "/dashboard" });
+      navigate({ to: "/app/dashboard" });
     }
   }
 

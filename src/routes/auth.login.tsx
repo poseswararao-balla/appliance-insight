@@ -28,7 +28,7 @@ function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) navigate({ to: "/dashboard" });
+    if (user) navigate({ to: "/app/dashboard" });
   }, [user, navigate]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -45,7 +45,7 @@ function LoginPage() {
       toast.error(error.message);
     } else {
       toast.success("Welcome back!");
-      navigate({ to: "/dashboard" });
+      navigate({ to: "/app/dashboard" });
     }
   }
 

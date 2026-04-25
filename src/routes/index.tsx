@@ -16,7 +16,7 @@ function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && user) navigate({ to: "/dashboard" });
+    if (!loading && user) navigate({ to: "/app/dashboard" });
   }, [user, loading, navigate]);
 
   return (
